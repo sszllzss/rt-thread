@@ -1,0 +1,17 @@
+from building import *
+
+cwd = GetCurrentDir()
+
+# add the general drivers.
+src = Split("""
+board.c
+MCUX_Config/board/clock_config.c
+MCUX_Config/board/pin_mux.c
+""")
+
+CPPPATH = [cwd,cwd + '/MCUX_Config/board',cwd + '/ports']
+CPPDEFINES = ['CPU_MIMXRT1021CAG4A', 'SKIP_SYSCLK_INIT', 'EVK_MCIMXRM', 'FSL_SDK_ENABLE_DRIVER_CACHE_CONTROL=1','XIP_EXTERNAL_FLASH=1']
+
+group = DefineGroup('Drivers', src, depend = [''], CPPPATH = CPPPATH, CPPDEFINES=CPPDEFINES)
+
+Return('group')
