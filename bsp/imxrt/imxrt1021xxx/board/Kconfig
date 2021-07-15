@@ -1,0 +1,302 @@
+menu "Hardware Drivers Config"
+
+config SOC_IMXRT1021CAG4A
+    bool 
+    select SOC_IMXRT1020_SERIES
+    select RT_USING_COMPONENTS_INIT
+    select RT_USING_USER_MAIN
+    default y
+
+menu "On-chip Peripheral Drivers"
+
+    config BSP_USING_DMA
+        bool "Enable DMA"
+        default n
+        
+    config BSP_USING_GPIO
+        bool "Enable GPIO"
+        select RT_USING_PIN
+        default y
+
+    menuconfig BSP_USING_LPUART
+        bool "Enable UART"
+        select RT_USING_SERIAL
+        default y
+        
+        if BSP_USING_LPUART
+            config BSP_USING_LPUART1
+                bool "Enable LPUART1"
+                default y
+
+                config BSP_LPUART1_RX_USING_DMA
+                    bool "Enable LPUART1 RX DMA"
+                    depends on BSP_USING_LPUART1
+                    select BSP_USING_DMA
+                    select RT_SERIAL_USING_DMA
+                    default n
+
+                    config BSP_LPUART1_RX_DMA_CHANNEL
+                        depends on BSP_LPUART1_RX_USING_DMA
+                        int "Set LPUART1 RX DMA channel (0-32)"
+                        default 0
+
+                config BSP_LPUART1_TX_USING_DMA
+                    bool "Enable LPUART1 TX DMA"
+                    depends on BSP_USING_LPUART1
+                    select BSP_USING_DMA
+                    select RT_SERIAL_USING_DMA
+                    default n
+
+                    config BSP_LPUART1_TX_DMA_CHANNEL
+                        depends on BSP_LPUART1_TX_USING_DMA
+                        int "Set LPUART1 TX DMA channel (0-32)"
+                        default 1
+						
+						
+            config BSP_USING_LPUART2
+                bool "Enable LPUART2"
+                default n
+
+                config BSP_LPUART2_RX_USING_DMA
+                    bool "Enable LPUART2 RX DMA"
+                    depends on BSP_USING_LPUART2
+                    select BSP_USING_DMA
+                    select RT_SERIAL_USING_DMA
+                    default n
+
+                    config BSP_LPUART2_RX_DMA_CHANNEL
+                        depends on BSP_LPUART2_RX_USING_DMA
+                        int "Set LPUART2 RX DMA channel (0-32)"
+                        default 4
+
+                config BSP_LPUART2_TX_USING_DMA
+                    bool "Enable LPUART2 TX DMA"
+                    depends on BSP_USING_LPUART2
+                    select BSP_USING_DMA
+                    select RT_SERIAL_USING_DMA
+                    default n
+
+                    config BSP_LPUART2_TX_DMA_CHANNEL
+                        depends on BSP_LPUART2_TX_USING_DMA
+                        int "Set LPUART2 TX DMA channel (0-32)"
+                        default 5
+
+
+            config BSP_USING_LPUART3
+                bool "Enable LPUART3"
+                default n
+
+                config BSP_LPUART3_RX_USING_DMA
+                    bool "Enable LPUART3 RX DMA"
+                    depends on BSP_USING_LPUART3
+                    select BSP_USING_DMA
+                    select RT_SERIAL_USING_DMA
+                    default n
+
+                    config BSP_LPUART3_RX_DMA_CHANNEL
+                        depends on BSP_LPUART3_RX_USING_DMA
+                        int "Set LPUART3 RX DMA channel (0-32)"
+                        default 6
+
+                config BSP_LPUART3_TX_USING_DMA
+                    bool "Enable LPUART3 TX DMA"
+                    depends on BSP_USING_LPUART3
+                    select BSP_USING_DMA
+                    select RT_SERIAL_USING_DMA
+                    default n
+
+                    config BSP_LPUART3_TX_DMA_CHANNEL
+                        depends on BSP_LPUART3_TX_USING_DMA
+                        int "Set LPUART3 TX DMA channel (0-32)"
+                        default 7							
+						
+        endif
+
+menuconfig BSP_USING_HWTIMER
+        bool "Enable GPT"
+        default n
+        select RT_USING_HWTIMER
+        if BSP_USING_TIM
+            config BSP_USING_HWTIMER1
+                bool "Enable GPT1"
+                default n
+
+            config BSP_USING_HWTIMER2
+                bool "Enable GPT2"
+                default n
+        endif
+
+    menuconfig BSP_USING_PWM
+        bool "Enable PWM"
+        default n
+        select RT_USING_PWM
+        if BSP_USING_PWM
+            menuconfig BSP_USING_PWM1
+                bool "Enable output pwm1"
+                default n
+                if BSP_USING_PWM1
+                    config BSP_USING_PWM1_CH2
+                        bool "Enable PWM1 channel2"
+                        default n
+                endif
+				
+            menuconfig BSP_USING_PWM2
+                bool "Enable output pwm2"
+                default n
+                if BSP_USING_PWM2
+                    config BSP_USING_PWM2_CH3
+                        bool "Enable PWM2 channel3"
+                        default n
+                endif
+        endif
+
+    menuconfig BSP_USING_I2C
+        bool "Enable I2C"
+        select RT_USING_I2C
+        default n
+        if BSP_USING_I2C
+            config BSP_USING_I2C1
+                bool "Enable I2C1"
+                default n
+				if BSP_USING_I2C1
+					choice
+						prompt "Select I2C1 badurate"
+						default HW_I2C1_BADURATE_100kHZ
+
+						config HW_I2C1_BADURATE_100kHZ
+							bool "Badurate 100kHZ"
+
+						config HW_I2C1_BADURATE_400kHZ
+							bool "Badurate 400kHZ"
+					endchoice
+				endif
+            config BSP_USING_I2C3
+                bool "Enable I2C3"
+                default n
+				if BSP_USING_I2C3
+					choice
+						prompt "Select I2C3 badurate"
+						default HW_I2C3_BADURATE_100kHZ
+
+						config HW_I2C3_BADURATE_100kHZ
+							bool "Badurate 100kHZ"
+
+						config HW_I2C3_BADURATE_400kHZ
+							bool "Badurate 400kHZ"
+					endchoice
+				endif
+        endif
+
+	config BSP_USING_SPI
+        bool "Enable SPI"
+        select RT_USING_SPI
+        default n
+		if BSP_USING_SPI
+			config BSP_USING_SPI1
+				bool "Enable SPI1"
+				select RT_USING_SPI
+				default n
+                config BSP_SPI1_USING_DMA
+                    bool "Enable LPSPI1 DMA"
+                    depends on BSP_USING_SPI1
+                    select BSP_USING_DMA
+                    select RT_SERIAL_USING_DMA
+                    default n
+					config BSP_SPI1_RX_DMA_CHANNEL
+						depends on BSP_SPI1_USING_DMA
+						int "Set LPSPI1 RX DMA channel (0-32)"
+						default 2	
+					config BSP_SPI1_TX_DMA_CHANNEL
+						depends on BSP_SPI1_USING_DMA
+						int "Set LPSPI1 TX DMA channel (0-32)"
+						default 3
+						
+			config BSP_USING_SPI4
+				bool "Enable SPI4"
+				select RT_USING_SPI
+				default n
+                config BSP_SPI4_USING_DMA
+                    bool "Enable LPSPI4 DMA"
+                    depends on BSP_USING_SPI4
+                    select BSP_USING_DMA
+                    select RT_SERIAL_USING_DMA
+                    default n
+					config BSP_SPI4_RX_DMA_CHANNEL
+						depends on BSP_SPI4_USING_DMA
+						int "Set LPSPI4 RX DMA channel (0-32)"
+						default 8	
+					config BSP_SPI4_TX_DMA_CHANNEL
+						depends on BSP_SPI4_USING_DMA
+						int "Set LPSPI4 TX DMA channel (0-32)"
+						default 9
+		endif
+		
+    config BSP_USING_RTC
+        bool "Enable RTC"
+        select RT_USING_RTC
+        default n
+		
+    config BSP_USING_WDT
+        bool "Enable WDT"
+        select RT_USING_WDT
+        default n
+		if BSP_USING_WDT
+			config BSP_USING_WDT1
+				bool "Enable WDT1"
+				default n
+		endif
+		
+		
+		
+	
+    config BSP_USING_ADC
+        bool "Enable ADC"
+        select RT_USING_ADC
+        default n	
+		if BSP_USING_ADC
+			config BSP_USING_ADC1
+				bool "Enable ADC1"
+				select RT_USING_ADC
+				default n
+			config BSP_USING_ADC2
+				bool "Enable ADC2"
+				select RT_USING_ADC
+				default n
+		endif
+
+    config BSP_USING_SDRAM
+        bool "Enable SDRAM"
+        default n
+		
+    config BSP_USING_SDIO
+        bool "Enable SDIO"
+        select RT_USING_SDIO
+		select RT_USING_DFS
+        default n	
+		
+    config BSP_USING_CAN
+        bool "Enable CAN"
+        select RT_USING_CAN
+        default n	
+		if BSP_USING_CAN
+			config BSP_USING_CAN1
+				bool "Enable CAN1"
+				select RT_USING_CAN
+				default n
+			config BSP_USING_CAN2
+				bool "Enable CAN2"
+				select RT_USING_CAN
+				default n
+		endif
+endmenu
+
+menu "Onboard Peripheral Drivers"
+
+
+endmenu
+
+menu "Board extended module Drivers"
+
+endmenu
+
+endmenu
