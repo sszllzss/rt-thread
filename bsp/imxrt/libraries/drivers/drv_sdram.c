@@ -42,7 +42,11 @@ int rt_hw_sdram_Init(void)
     sdramconfig.address                 = SDRAM_BANK_ADDR;
     sdramconfig.memsize_kbytes          = SDRAM_SIZE;
     sdramconfig.portSize                = SDRAM_DATA_WIDTH;
+#if defined(FSL_FEATURE_SEMC_ERRATA_050577) && (FSL_FEATURE_SEMC_ERRATA_050577 == 0x01U)
+	sdramconfig.burstLen                = kSEMC_Sdram_BurstLen1;
+#else
     sdramconfig.burstLen                = kSEMC_Sdram_BurstLen8;
+#endif
     sdramconfig.columnAddrBitNum        = SDRAM_COLUMN_BITS;
     sdramconfig.casLatency              = SDRAM_CAS_LATENCY;
     sdramconfig.tPrecharge2Act_Ns       = SDRAM_TRP;

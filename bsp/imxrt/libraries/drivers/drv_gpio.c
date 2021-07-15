@@ -28,11 +28,11 @@
 #define PIN_INVALID_CHECK(PORT_INDEX,PIN_NUM)    (PORT_INDEX > 4) || ((mask_tab[PORT_INDEX].valid_mask & (1 << PIN_NUM)) == 0)
 
 #if defined(SOC_IMXRT1015_SERIES)
-#define muxReg_base         0x401f8024
-#define configReg_base      0x401f8198
+#define MUX_BASE         0x401f8024
+#define CONFIG_BASE      0x401f8198
 #elif defined(SOC_IMXRT1020_SERIES)
-#define muxReg_base         0x401f8014
-#define configReg_base      0x401f8188
+#define MUX_BASE         0x401f8014
+#define CONFIG_BASE      0x401f8188
 #else /* 1050 & 1060 & 1064 series*/
 #define MUX_BASE            0x401f8014
 #define CONFIG_BASE         0x401f8204
