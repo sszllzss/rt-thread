@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2015, Freescale Semiconductor, Inc.
- * Copyright 2016-2017 NXP
+ * Copyright 2016-2020 NXP
  * All rights reserved.
  *
  * SPDX-License-Identifier: BSD-3-Clause
@@ -39,6 +39,9 @@ static void *s_flexioType[FLEXIO_HANDLE_COUNT];
 
 /*< @brief pointer to array of FLEXIO Isr. */
 static flexio_isr_t s_flexioIsr[FLEXIO_HANDLE_COUNT];
+
+/* FlexIO common IRQ Handler. */
+static void FLEXIO_CommonIRQHandler(void);
 
 /*******************************************************************************
  * Codes
@@ -113,7 +116,7 @@ void FLEXIO_Init(FLEXIO_Type *base, const flexio_config_t *userConfig)
  * note After calling this API, call the FLEXO_Init to use the FlexIO module.
  *
  * param base FlexIO peripheral base address
-*/
+ */
 void FLEXIO_Deinit(FLEXIO_Type *base)
 {
     FLEXIO_Enable(base, false);
@@ -136,14 +139,14 @@ void FLEXIO_Deinit(FLEXIO_Type *base)
 */
 void FLEXIO_GetDefaultConfig(flexio_config_t *userConfig)
 {
-    assert(userConfig);
+    assert(userConfig != NULL);
 
     /* Initializes the configure structure to zero. */
-    memset(userConfig, 0, sizeof(*userConfig));
+    (void)memset(userConfig, 0, sizeof(*userConfig));
 
-    userConfig->enableFlexio = true;
-    userConfig->enableInDoze = false;
-    userConfig->enableInDebug = true;
+    userConfig->enableFlexio     = true;
+    userConfig->enableInDoze     = false;
+    userConfig->enableInDebug    = true;
     userConfig->enableFastAccess = false;
 }
 
@@ -151,7 +154,7 @@ void FLEXIO_GetDefaultConfig(flexio_config_t *userConfig)
  * brief Resets the FlexIO module.
  *
  * param base FlexIO peripheral base address
-*/
+ */
 void FLEXIO_Reset(FLEXIO_Type *base)
 {
     /*do software reset, software reset operation affect all other FLEXIO registers except CTRL*/
@@ -166,7 +169,7 @@ void FLEXIO_Reset(FLEXIO_Type *base)
  * param type Shifter type of flexio_shifter_buffer_type_t
  * param index Shifter index
  * return Corresponding shifter buffer index
-*/
+ */
 uint32_t FLEXIO_GetShifterBufferAddress(FLEXIO_Type *base, flexio_shifter_buffer_type_t type, uint8_t index)
 {
     assert(index < FLEXIO_SHIFTBUF_COUNT);
@@ -210,6 +213,7 @@ uint32_t FLEXIO_GetShifterBufferAddress(FLEXIO_Type *base, flexio_shifter_buffer
 
 #endif
         default:
+            address = (uint32_t) & (base->SHIFTBUF[index]);
             break;
     }
     return address;
@@ -310,29 +314,29 @@ void FLEXIO_SetTimerConfig(FLEXIO_Type *base, uint8_t index, const flexio_timer_
  * param isr FlexIO simulated peripheral interrupt handler.
  * retval kStatus_Success Successfully create the handle.
  * retval kStatus_OutOfRange The FlexIO type/handle/ISR table out of range.
-*/
+ */
 status_t FLEXIO_RegisterHandleIRQ(void *base, void *handle, flexio_isr_t isr)
 {
-    assert(base);
-    assert(handle);
-    assert(isr);
+    assert(base != NULL);
+    assert(handle != NULL);
+    assert(isr != NULL);
 
-    uint8_t index = 0;
+    uint8_t index;
 
     /* Find the an empty handle pointer to store the handle. */
-    for (index = 0; index < FLEXIO_HANDLE_COUNT; index++)
+    for (index = 0U; index < (uint8_t)FLEXIO_HANDLE_COUNT; index++)
     {
         if (s_flexioHandle[index] == NULL)
         {
             /* Register FLEXIO simulated driver base, handle and isr. */
-            s_flexioType[index] = base;
+            s_flexioType[index]   = base;
             s_flexioHandle[index] = handle;
-            s_flexioIsr[index] = isr;
+            s_flexioIsr[index]    = isr;
             break;
         }
     }
 
-    if (index == FLEXIO_HANDLE_COUNT)
+    if (index == (uint8_t)FLEXIO_HANDLE_COUNT)
     {
         return kStatus_OutOfRange;
     }
@@ -348,27 +352,27 @@ status_t FLEXIO_RegisterHandleIRQ(void *base, void *handle, flexio_isr_t isr)
  * param base Pointer to the FlexIO simulated peripheral type.
  * retval kStatus_Success Successfully create the handle.
  * retval kStatus_OutOfRange The FlexIO type/handle/ISR table out of range.
-*/
+ */
 status_t FLEXIO_UnregisterHandleIRQ(void *base)
 {
-    assert(base);
+    assert(base != NULL);
 
-    uint8_t index = 0;
+    uint8_t index;
 
     /* Find the index from base address mappings. */
-    for (index = 0; index < FLEXIO_HANDLE_COUNT; index++)
+    for (index = 0U; index < (uint8_t)FLEXIO_HANDLE_COUNT; index++)
     {
         if (s_flexioType[index] == base)
         {
             /* Unregister FLEXIO simulated driver handle and isr. */
-            s_flexioType[index] = NULL;
+            s_flexioType[index]   = NULL;
             s_flexioHandle[index] = NULL;
-            s_flexioIsr[index] = NULL;
+            s_flexioIsr[index]    = NULL;
             break;
         }
     }
 
-    if (index == FLEXIO_HANDLE_COUNT)
+    if (index == (uint8_t)FLEXIO_HANDLE_COUNT)
     {
         return kStatus_OutOfRange;
     }
@@ -378,49 +382,51 @@ status_t FLEXIO_UnregisterHandleIRQ(void *base)
     }
 }
 
-void FLEXIO_CommonIRQHandler(void)
+static void FLEXIO_CommonIRQHandler(void)
 {
     uint8_t index;
 
-    for (index = 0; index < FLEXIO_HANDLE_COUNT; index++)
+    for (index = 0U; index < (uint8_t)FLEXIO_HANDLE_COUNT; index++)
     {
-        if (s_flexioHandle[index])
+        if (s_flexioHandle[index] != NULL)
         {
             s_flexioIsr[index](s_flexioType[index], s_flexioHandle[index]);
         }
     }
-/* Add for ARM errata 838869, affects Cortex-M4, Cortex-M4F Store immediate overlapping
-  exception return operation might vector to incorrect interrupt */
-#if defined __CORTEX_M && (__CORTEX_M == 4U)
-    __DSB();
-#endif
+    SDK_ISR_EXIT_BARRIER;
 }
 
+void FLEXIO_DriverIRQHandler(void);
 void FLEXIO_DriverIRQHandler(void)
 {
     FLEXIO_CommonIRQHandler();
 }
 
+void FLEXIO0_DriverIRQHandler(void);
 void FLEXIO0_DriverIRQHandler(void)
 {
     FLEXIO_CommonIRQHandler();
 }
 
+void FLEXIO1_DriverIRQHandler(void);
 void FLEXIO1_DriverIRQHandler(void)
 {
     FLEXIO_CommonIRQHandler();
 }
 
+void UART2_FLEXIO_DriverIRQHandler(void);
 void UART2_FLEXIO_DriverIRQHandler(void)
 {
     FLEXIO_CommonIRQHandler();
 }
 
+void FLEXIO2_DriverIRQHandler(void);
 void FLEXIO2_DriverIRQHandler(void)
 {
     FLEXIO_CommonIRQHandler();
 }
 
+void FLEXIO3_DriverIRQHandler(void);
 void FLEXIO3_DriverIRQHandler(void)
 {
     FLEXIO_CommonIRQHandler();

@@ -38,5 +38,26 @@ extern int heap_end;
 
 void rt_hw_board_init(void);
 
+
+
+#if defined(__CC_ARM) || defined(__CLANG_ARM)           /* ARM Compiler */
+    #define RT_SECTION(x)               __attribute__((section(x)))
+#elif defined (__IAR_SYSTEMS_ICC__)     /* for IAR Compiler */
+    #define RT_SECTION(x)               @ x
+#elif defined (__GNUC__)                /* GNU GCC Compiler */
+    #define RT_SECTION(x)               __attribute__((section(x)))
+#elif defined (__ADSPBLACKFIN__)        /* for VisualDSP++ Compiler */
+    #define RT_SECTION(x)               __attribute__((section(x)))
+#elif defined (_MSC_VER)
+    #define RT_SECTION(x)
+#elif defined (__TI_COMPILER_VERSION__)
+    #define RT_SECTION(x)
+#elif defined (__TASKING__)
+    #define RT_SECTION(x)               __attribute__((section(x)))
+#else
+    #error not supported tool chain
+#endif
+
+
 #endif
 

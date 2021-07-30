@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2015, Freescale Semiconductor, Inc.
- * Copyright 2016-2017 NXP
+ * Copyright 2016-2020 NXP
  * All rights reserved.
  *
  * SPDX-License-Identifier: BSD-3-Clause
@@ -22,8 +22,8 @@
 
 /*! @name Driver version */
 /*@{*/
-/*! @brief LPUART EDMA driver version 2.2.6. */
-#define FSL_LPUART_EDMA_DRIVER_VERSION (MAKE_VERSION(2, 2, 6))
+/*! @brief LPUART EDMA driver version. */
+#define FSL_LPUART_EDMA_DRIVER_VERSION (MAKE_VERSION(2, 5, 0))
 /*@}*/
 
 /* Forward declaration of the handle typedef. */
@@ -36,8 +36,8 @@ typedef void (*lpuart_edma_transfer_callback_t)(LPUART_Type *base,
                                                 void *userData);
 
 /*!
-* @brief LPUART eDMA handle
-*/
+ * @brief LPUART eDMA handle
+ */
 struct _lpuart_edma_handle
 {
     lpuart_edma_transfer_callback_t callback; /*!< Callback function. */
@@ -161,6 +161,17 @@ status_t LPUART_TransferGetSendCountEDMA(LPUART_Type *base, lpuart_edma_handle_t
  * @retval kStatus_Success Get successfully through the parameter \p count;
  */
 status_t LPUART_TransferGetReceiveCountEDMA(LPUART_Type *base, lpuart_edma_handle_t *handle, uint32_t *count);
+
+/*!
+ * @brief LPUART eDMA IRQ handle function.
+ *
+ * This function handles the LPUART tx complete IRQ request and invoke user callback.
+ * It is not set to static so that it can be used in user application.
+ *
+ * @param base LPUART peripheral base address.
+ * @param lpuartEdmaHandle LPUART handle pointer.
+ */
+void LPUART_TransferEdmaHandleIRQ(LPUART_Type *base, void *lpuartEdmaHandle);
 
 /*@}*/
 
