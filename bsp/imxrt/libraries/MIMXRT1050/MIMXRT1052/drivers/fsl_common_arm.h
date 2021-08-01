@@ -14,10 +14,11 @@
  * CMSIS pack RTE generates "RTC_Components.h" which contains the statements
  * of the related <RTE_Components_h> element for all selected software components.
  */
+#if !(defined(__CC_ARM) || defined(__CLANG_ARM))
 #ifdef _RTE_
 #include "RTE_Components.h"
 #endif
-
+#endif
 /*!
  * @addtogroup ksdk_common
  * @{
