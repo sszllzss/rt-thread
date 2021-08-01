@@ -38,5 +38,8 @@ extern int heap_end;
 
 void rt_hw_board_init(void);
 
+
+#define BOARD_FLASH_SIZE (8*1024*1024)
+
 #endif
 
