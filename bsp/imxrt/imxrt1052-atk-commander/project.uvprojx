@@ -339,7 +339,7 @@
               <MiscControls>--library_interface=armcc --library_type=standardlib --diag_suppress=66,1296,186</MiscControls>
               <Define>__RTTHREAD__, SKIP_SYSCLK_INIT, CPU_MIMXRT1052CVL5B, __OPTIMIZE__, XIP_BOOT_HEADER_ENABLE=1, FSL_SDK_ENABLE_DRIVER_CACHE_CONTROL=1, XIP_EXTERNAL_FLASH=1, EVK_MCIMXRM, RT_USING_ARM_LIBC</Define>
               <Undefine></Undefine>
-              <IncludePath>applications;..\..\..\libcpu\arm\common;..\..\..\libcpu\arm\cortex-m7;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\spi;..\..\..\components\drivers\include;..\..\..\components\drivers\spi\sfud\inc;..\..\..\components\drivers\include;..\..\..\components\drivers\include;board;board\MCUX_Config;board\ports;..\libraries\drivers;..\libraries\drivers\config;..\..\..\components\dfs\include;..\..\..\components\dfs\filesystems\devfs;..\..\..\components\finsh;.;..\..\..\include;..\..\..\components\libc\compilers\armlibc;..\..\..\components\libc\compilers\common;..\libraries\MIMXRT1050\CMSIS\Include;..\libraries\MIMXRT1050\MIMXRT1052;..\libraries\MIMXRT1050\MIMXRT1052\drivers;xip</IncludePath>
+              <IncludePath>applications;..\..\..\libcpu\arm\common;..\..\..\libcpu\arm\cortex-m7;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\include;..\..\..\components\drivers\spi;..\..\..\components\drivers\include;..\..\..\components\drivers\spi\sfud\inc;..\..\..\components\drivers\include;..\..\..\components\drivers\include;board;board\MCUX_Config\board;board\ports;..\libraries\drivers;..\libraries\drivers\config;..\..\..\components\dfs\include;..\..\..\components\dfs\filesystems\devfs;..\..\..\components\finsh;.;..\..\..\include;..\..\..\components\libc\compilers\armlibc;..\..\..\components\libc\compilers\common;..\libraries\MIMXRT1050\CMSIS\Include;..\libraries\MIMXRT1050\MIMXRT1052;..\libraries\MIMXRT1050\MIMXRT1052\drivers;xip</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -660,12 +660,12 @@
             <File>
               <FileName>clock_config.c</FileName>
               <FileType>1</FileType>
-              <FilePath>board\MCUX_Config\clock_config.c</FilePath>
+              <FilePath>board\MCUX_Config\board\clock_config.c</FilePath>
             </File>
             <File>
               <FileName>pin_mux.c</FileName>
               <FileType>1</FileType>
-              <FilePath>board\MCUX_Config\pin_mux.c</FilePath>
+              <FilePath>board\MCUX_Config\board\pin_mux.c</FilePath>
             </File>
             <File>
               <FileName>drv_gpio.c</FileName>
@@ -678,54 +678,9 @@
               <FilePath>..\libraries\drivers\drv_uart.c</FilePath>
             </File>
             <File>
-              <FileName>drv_hwtimer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\drivers\drv_hwtimer.c</FilePath>
-            </File>
-            <File>
-              <FileName>drv_rtc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\drivers\drv_rtc.c</FilePath>
-            </File>
-            <File>
               <FileName>drv_spi.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\libraries\drivers\drv_spi.c</FilePath>
-            </File>
-            <File>
-              <FileName>drv_i2c.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\drivers\drv_i2c.c</FilePath>
-            </File>
-            <File>
-              <FileName>drv_wdt.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\drivers\drv_wdt.c</FilePath>
-            </File>
-            <File>
-              <FileName>drv_pwm.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\drivers\drv_pwm.c</FilePath>
-            </File>
-            <File>
-              <FileName>drv_adc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\drivers\drv_adc.c</FilePath>
-            </File>
-            <File>
-              <FileName>drv_can.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\drivers\drv_can.c</FilePath>
-            </File>
-            <File>
-              <FileName>drv_sdram.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\drivers\drv_sdram.c</FilePath>
-            </File>
-            <File>
-              <FileName>drv_sdio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\drivers\drv_sdio.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -943,69 +898,9 @@
               <FilePath>..\libraries\MIMXRT1050\MIMXRT1052\drivers\fsl_lpuart.c</FilePath>
             </File>
             <File>
-              <FileName>fsl_lpi2c.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\MIMXRT1050\MIMXRT1052\drivers\fsl_lpi2c.c</FilePath>
-            </File>
-            <File>
               <FileName>fsl_lpspi.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\libraries\MIMXRT1050\MIMXRT1052\drivers\fsl_lpspi.c</FilePath>
-            </File>
-            <File>
-              <FileName>fsl_gpt.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\MIMXRT1050\MIMXRT1052\drivers\fsl_gpt.c</FilePath>
-            </File>
-            <File>
-              <FileName>fsl_pwm.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\MIMXRT1050\MIMXRT1052\drivers\fsl_pwm.c</FilePath>
-            </File>
-            <File>
-              <FileName>fsl_qtmr.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\MIMXRT1050\MIMXRT1052\drivers\fsl_qtmr.c</FilePath>
-            </File>
-            <File>
-              <FileName>fsl_snvs_hp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\MIMXRT1050\MIMXRT1052\drivers\fsl_snvs_hp.c</FilePath>
-            </File>
-            <File>
-              <FileName>fsl_snvs_lp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\MIMXRT1050\MIMXRT1052\drivers\fsl_snvs_lp.c</FilePath>
-            </File>
-            <File>
-              <FileName>fsl_wdog.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\MIMXRT1050\MIMXRT1052\drivers\fsl_wdog.c</FilePath>
-            </File>
-            <File>
-              <FileName>fsl_rtwdog.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\MIMXRT1050\MIMXRT1052\drivers\fsl_rtwdog.c</FilePath>
-            </File>
-            <File>
-              <FileName>fsl_adc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\MIMXRT1050\MIMXRT1052\drivers\fsl_adc.c</FilePath>
-            </File>
-            <File>
-              <FileName>fsl_semc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\MIMXRT1050\MIMXRT1052\drivers\fsl_semc.c</FilePath>
-            </File>
-            <File>
-              <FileName>fsl_flexcan.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\MIMXRT1050\MIMXRT1052\drivers\fsl_flexcan.c</FilePath>
-            </File>
-            <File>
-              <FileName>fsl_usdhc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\libraries\MIMXRT1050\MIMXRT1052\drivers\fsl_usdhc.c</FilePath>
             </File>
             <File>
               <FileName>fsl_dmamux.c</FileName>

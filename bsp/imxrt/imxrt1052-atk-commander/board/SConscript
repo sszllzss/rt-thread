@@ -7,8 +7,8 @@ cwd = GetCurrentDir()
 # add the general drivers.
 src = Split("""
 board.c
-MCUX_Config/clock_config.c
-MCUX_Config/pin_mux.c
+MCUX_Config/board/clock_config.c
+MCUX_Config/board/pin_mux.c
 """)
 CPPDEFINES = Split("""
 CPU_MIMXRT1052CVL5B
@@ -19,7 +19,7 @@ XIP_EXTERNAL_FLASH=1
 XIP_BOOT_HEADER_ENABLE=1
 XIP_BOOT_HEADER_ENABLE=1
 """)
-CPPPATH = [cwd,cwd + '/MCUX_Config',cwd + '/ports']
+CPPPATH = [cwd,cwd + '/MCUX_Config/board',cwd + '/ports']
 #CPPDEFINES = ['CPU_MIMXRT1052CVL5B', 'SKIP_SYSCLK_INIT', 'EVK_MCIMXRM', 'FSL_SDK_ENABLE_DRIVER_CACHE_CONTROL=1','XIP_EXTERNAL_FLASH=1']
 if rtconfig.CROSS_TOOL == 'keil':
 	CPPDEFINES += ['__OPTIMIZE__']

@@ -15,11 +15,11 @@
 
 /* TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
 !!GlobalInfo
-product: Clocks v5.0
+product: Clocks v7.0
 processor: MIMXRT1052xxxxB
 package_id: MIMXRT1052DVL6B
 mcu_data: ksdk2_0
-processor_version: 5.0.2
+processor_version: 8.0.2
 board: IMXRT1050-EVKB
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
 
@@ -126,7 +126,6 @@ settings:
 - {id: CCM_ANALOG_PLL_ENET_POWERDOWN_CFG, value: 'Yes'}
 - {id: CCM_ANALOG_PLL_USB1_POWER_CFG, value: 'Yes'}
 sources:
-- {id: XTALOSC24M.OSC.outFreq, value: 24 MHz, enabled: true}
 - {id: XTALOSC24M.RTC_OSC.outFreq, value: 32.768 kHz, enabled: true}
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
 
@@ -353,6 +352,9 @@ void BOARD_BootClockRUN(void)
      * With this macro SKIP_SYSCLK_INIT, system pll (selected to be SEMC source clock in SDK projects) will be left unchanged.
      * Note: If another clock source is selected for SEMC, user may want to avoid changing that clock as well.*/
 #ifndef SKIP_SYSCLK_INIT
+#if defined(XIP_BOOT_HEADER_DCD_ENABLE) && (XIP_BOOT_HEADER_DCD_ENABLE == 1)
+    #warning "SKIP_SYSCLK_INIT should be defined to keep system pll (selected to be SEMC source clock in SDK projects) unchanged."
+#endif
     /* Init System PLL. */
     CLOCK_InitSysPll(&sysPllConfig_BOARD_BootClockRUN);
     /* Init System pfd0. */
