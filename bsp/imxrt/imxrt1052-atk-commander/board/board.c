@@ -109,7 +109,7 @@ void imxrt_dma_init(void)
     EDMA_Init(DMA0, &config);
 }
 #endif
-
+#include"sdram.h"
 void rt_hw_board_init()
 {
     BOARD_ConfigMPU();
@@ -119,22 +119,26 @@ void rt_hw_board_init()
     NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_4);
     SysTick_Config(SystemCoreClock / RT_TICK_PER_SECOND);
 
+
+
 #ifdef BSP_USING_DMA
     imxrt_dma_init();
 #endif
-
+    //SDRAM_Init();
 #ifdef RT_USING_HEAP
     rt_system_heap_init((void *)HEAP_BEGIN, (void *)HEAP_END);
 #endif
-
 #ifdef RT_USING_COMPONENTS_INIT
     rt_components_board_init();
 #endif
 
+
 #ifdef RT_USING_CONSOLE
     rt_console_set_device(RT_CONSOLE_DEVICE_NAME);
 #endif
+
 }
+
 void rt_hw_us_delay(rt_uint32_t us)
 {
     rt_uint32_t ticks;

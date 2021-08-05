@@ -93,10 +93,17 @@
 #define RT_USING_SPI
 #define RT_USING_SFUD
 #define RT_SFUD_USING_SFDP
+#define RT_SFUD_USING_FLASH_INFO_TABLE
 #define RT_SFUD_SPI_MAX_HZ 50000000
 
 /* Using USB */
 
+#define RT_USING_USB_DEVICE
+#define RT_USBD_THREAD_STACK_SZ 4096
+#define USB_VENDOR_ID 0x0FFE
+#define USB_PRODUCT_ID 0x0001
+#define _RT_USB_DEVICE_NONE
+#define RT_USB_DEVICE_NONE
 
 /* POSIX layer and C standard library */
 
@@ -205,6 +212,8 @@
 
 /* Onboard Peripheral Drivers */
 
+#define BSP_USING_SPI_FLASH
 #define BSP_USING_SDRAM
+#define BSP_USING_USB_DEVICE
 
 #endif

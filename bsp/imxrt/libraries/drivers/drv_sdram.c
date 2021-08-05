@@ -36,22 +36,26 @@ int rt_hw_sdram_Init(void)
     SEMC_GetDefaultConfig(&config);
     config.dqsMode = kSEMC_Loopbackdqspad;  /* For more accurate timing. */
     SEMC_Init(SEMC, &config);
-
+    SEMC_GetDefaultConfig(&sdramconfig);         //先配置为默认值
     /* Configure SDRAM. */
     sdramconfig.csxPinMux               = SDRAM_CS_PIN;
     sdramconfig.address                 = SDRAM_BANK_ADDR;
     sdramconfig.memsize_kbytes          = SDRAM_SIZE;
     sdramconfig.portSize                = SDRAM_DATA_WIDTH;
+#if defined(FSL_FEATURE_SEMC_ERRATA_050577) && (FSL_FEATURE_SEMC_ERRATA_050577 == 0x01U)
+	sdramconfig.burstLen                = kSEMC_Sdram_BurstLen1;
+#else
     sdramconfig.burstLen                = kSEMC_Sdram_BurstLen8;
+#endif
     sdramconfig.columnAddrBitNum        = SDRAM_COLUMN_BITS;
     sdramconfig.casLatency              = SDRAM_CAS_LATENCY;
     sdramconfig.tPrecharge2Act_Ns       = SDRAM_TRP;
     sdramconfig.tAct2ReadWrite_Ns       = SDRAM_TRCD;
     sdramconfig.tRefreshRecovery_Ns     = SDRAM_REFRESH_RECOVERY;
     sdramconfig.tWriteRecovery_Ns       = SDRAM_TWR;
-    sdramconfig.tCkeOff_Ns              = 42;  /* The minimum cycle of SDRAM CLK off state. CKE is off in self refresh at a minimum period tRAS.*/
+    sdramconfig.tCkeOff_Ns              = (1000000000/clockFrq);//42;  /* The minimum cycle of SDRAM CLK off state. CKE is off in self refresh at a minimum period tRAS.*/
     sdramconfig.tAct2Prechage_Ns        = SDRAM_TRAS;
-    sdramconfig.tSelfRefRecovery_Ns     = 67;
+    sdramconfig.tSelfRefRecovery_Ns     = 80;//67;
     sdramconfig.tRefresh2Refresh_Ns     = SDRAM_TRC;
     sdramconfig.tAct2Act_Ns             = SDRAM_ACT2ACT;
     sdramconfig.tPrescalePeriod_Ns      = 160 * (1000000000 / clockFrq);
@@ -67,6 +71,7 @@ int rt_hw_sdram_Init(void)
     else
     {
         LOG_D("sdram init success, mapped at 0x%X, size is %d Kbytes.", SDRAM_BANK_ADDR, SDRAM_SIZE);
+        rt_kprintf("sdram init success\n");
 #ifdef RT_USING_MEMHEAP_AS_HEAP
 	/*
 	 * If RT_USING_MEMHEAP_AS_HEAP is enabled, SDRAM is initialized to the heap.
@@ -75,8 +80,8 @@ int rt_hw_sdram_Init(void)
 	 * 		1. Reserve the half space for SDRAM link case
 	 *		2. Reserve the 2M for non-cache space
 	 */
-        rt_memheap_init(&system_heap, "sdram", (void *)(SDRAM_BANK_ADDR + (SDRAM_SIZE * 1024)/2),
-			(SDRAM_SIZE * 1024)/2 - (2 * 1024 * 1024));
+        // rt_memheap_init(&system_heap, "sdram", (void *)(SDRAM_BANK_ADDR + (SDRAM_SIZE * 1024)/2),
+		// 	(SDRAM_SIZE * 1024)/2 - (2 * 1024 * 1024));
 #endif
     }
     
@@ -112,7 +117,9 @@ void sdram_test(void)
     for (index = 0; index < datalen; index++)
     {
         sdram_readBuffer[index] = sdram[index];
+        
     }
+    
 
     LOG_D("\r\n SEMC SDRAM 32 bit Data Write and Read Compare Start!\r\n");
     /* Compare the two buffers. */
@@ -121,6 +128,7 @@ void sdram_test(void)
         if (sdram_writeBuffer[datalen] != sdram_readBuffer[datalen])
         {
             result = false;
+            LOG_E("sdram_writeBuffer[%d]:%08x sdram_readBuffer[%d]:%08x\r\n", datalen,sdram_writeBuffer[datalen],datalen,sdram_readBuffer[datalen]);
             break;
         }
     }

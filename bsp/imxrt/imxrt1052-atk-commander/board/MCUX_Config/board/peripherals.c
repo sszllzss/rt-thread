@@ -6,32 +6,15 @@
 /* clang-format off */
 /* TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
 !!GlobalInfo
-product: Peripherals v8.0
+product: Peripherals v10.0
 processor: MIMXRT1052xxxxB
-package_id: MIMXRT1052DVL6B
+package_id: MIMXRT1052CVL5B
 mcu_data: ksdk2_0
-processor_version: 8.0.2
-board: IMXRT1050-EVKB
+processor_version: 10.0.0
 functionalGroups:
 - name: BOARD_InitPeripherals
-  UUID: a7525270-2da6-4556-8d91-4ab9d0edc0e2
+  UUID: c6bc7b13-a78b-423f-8b07-c291d5b24ac3
   called_from_default_init: true
-  selectedCore: core0
-- name: BOARD_InitDEBUG_UARTPeripheral
-  UUID: 349fb27f-4b94-48d1-9301-0d8812a93b69
-  id_prefix: BOARD_
-  selectedCore: core0
-- name: BOARD_InitCSIPeripheral
-  UUID: c2f7f41b-38a0-4dd3-b029-256048cc18c3
-  id_prefix: BOARD_
-  selectedCore: core0
-- name: BOARD_InitCANPeripheral
-  UUID: 4dc2cf03-00b0-4336-be06-30cc1e4cf843
-  id_prefix: BOARD_
-  selectedCore: core0
-- name: BOARD_InitLCDPeripheral
-  UUID: 0f5eb822-e506-454e-be21-fe933a29ab72
-  id_prefix: BOARD_
   selectedCore: core0
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
 
@@ -43,6 +26,14 @@ component:
   - user_definitions: ''
   - user_includes: ''
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
+
+/* TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
+component:
+- type: 'uart_cmsis_common'
+- type_id: 'uart_cmsis_common_9cb8e302497aa696fdbb5a4fd622c2a8'
+- global_USART_CMSIS_common:
+  - quick_selection: 'default'
+ * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
 /* clang-format on */
 
 /***********************************************************************************************************************
@@ -51,428 +42,110 @@ component:
 #include "peripherals.h"
 
 /***********************************************************************************************************************
- * BOARD_InitDEBUG_UARTPeripheral functional group
+ * BOARD_InitPeripherals functional group
  **********************************************************************************************************************/
 /***********************************************************************************************************************
- * DEBUG_UART initialization code
+ * NVIC initialization code
  **********************************************************************************************************************/
 /* clang-format off */
 /* TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
 instance:
-- name: 'DEBUG_UART'
-- type: 'lpuart'
-- mode: 'polling'
-- custom_name_enabled: 'true'
-- type_id: 'lpuart_bebe3e12b6ec22bbd14199038f2bf459'
-- functional_group: 'BOARD_InitDEBUG_UARTPeripheral'
-- peripheral: 'LPUART1'
+- name: 'NVIC'
+- type: 'nvic'
+- mode: 'general'
+- custom_name_enabled: 'false'
+- type_id: 'nvic_57b5eef3774cc60acaede6f5b8bddc67'
+- functional_group: 'BOARD_InitPeripherals'
+- peripheral: 'NVIC'
 - config_sets:
-  - lpuartConfig_t:
-    - lpuartConfig:
-      - clockSource: 'LpuartClock'
-      - lpuartSrcClkFreq: 'BOARD_BootClockRUN'
-      - baudRate_Bps: '115200'
-      - parityMode: 'kLPUART_ParityDisabled'
-      - dataBitsCount: 'kLPUART_EightDataBits'
-      - isMsb: 'false'
-      - stopBitCount: 'kLPUART_OneStopBit'
-      - txFifoWatermark: '0'
-      - rxFifoWatermark: '1'
-      - enableRxRTS: 'false'
-      - enableTxCTS: 'false'
-      - txCtsSource: 'kLPUART_CtsSourcePin'
-      - txCtsConfig: 'kLPUART_CtsSampleAtStart'
-      - rxIdleType: 'kLPUART_IdleTypeStartBit'
-      - rxIdleConfig: 'kLPUART_IdleCharacter1'
-      - enableTx: 'true'
-      - enableRx: 'true'
+  - nvic:
+    - interrupt_table: []
+    - interrupts: []
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
 /* clang-format on */
-const lpuart_config_t BOARD_DEBUG_UART_config = {
-  .baudRate_Bps = 115200UL,
-  .parityMode = kLPUART_ParityDisabled,
-  .dataBitsCount = kLPUART_EightDataBits,
-  .isMsb = false,
-  .stopBitCount = kLPUART_OneStopBit,
-  .txFifoWatermark = 0U,
-  .rxFifoWatermark = 1U,
-  .enableRxRTS = false,
-  .enableTxCTS = false,
-  .txCtsSource = kLPUART_CtsSourcePin,
-  .txCtsConfig = kLPUART_CtsSampleAtStart,
-  .rxIdleType = kLPUART_IdleTypeStartBit,
-  .rxIdleConfig = kLPUART_IdleCharacter1,
-  .enableTx = true,
-  .enableRx = true
-};
 
-static void BOARD_DEBUG_UART_init(void) {
-  LPUART_Init(BOARD_DEBUG_UART_PERIPHERAL, &BOARD_DEBUG_UART_config, BOARD_DEBUG_UART_CLOCK_SOURCE);
-}
+/* Empty initialization function (commented out)
+static void NVIC_init(void) {
+} */
 
 /***********************************************************************************************************************
- * BOARD_InitCSIPeripheral functional group
- **********************************************************************************************************************/
-/***********************************************************************************************************************
- * CSI initialization code
+ * SEMC initialization code
  **********************************************************************************************************************/
 /* clang-format off */
 /* TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
 instance:
-- name: 'CSI'
-- type: 'csi'
-- mode: 'interrupt'
-- custom_name_enabled: 'true'
-- type_id: 'csi_b2cf1faba8074e676ac4be93ec552c5a'
-- functional_group: 'BOARD_InitCSIPeripheral'
-- peripheral: 'CSI'
+- name: 'SEMC'
+- type: 'semc'
+- mode: 'general'
+- custom_name_enabled: 'false'
+- type_id: 'semc_84a769c198c91c527e11dcec2f5b4b81'
+- functional_group: 'BOARD_InitPeripherals'
+- peripheral: 'SEMC'
 - config_sets:
-  - fsl_csi:
+  - fsl_semc:
+    - enableDCD: 'true'
     - clockConfig:
-      - clockSource: 'BusInterfaceClock'
+      - clockSource: 'kSEMC_ClkSrcPeri'
       - clockSourceFreq: 'BOARD_BootClockRUN'
-      - masterClockSource: 'CsiClock'
-      - masterClockSourceFreq: 'BOARD_BootClockRUN'
-    - config:
-      - format: 'RGB565'
-      - i_width: '320'
-      - i_height: '240'
-      - dataBus: 'kCSI_DataBus8Bit'
-      - workMode: 'kCSI_GatedClockMode'
-      - useExtVsync: 'true'
-      - polarityFlags: ''
-      - buffers_config:
-        - bufferName: 'defaultBuffer'
-        - bufCount: '4'
-        - bufferAlign: '64'
-    - interruptsCfg:
-      - isInterruptEnabled: 'false'
-      - interruptSources: ''
-      - interrupt:
-        - IRQn: 'CSI_IRQn'
-        - enable_interrrupt: 'enabled'
-        - enable_priority: 'false'
-        - priority: '0'
-        - enable_custom_name: 'false'
-    - quick_selection: 'QuickSelection1'
+    - semc_config_t:
+      - dqsMode: 'kSEMC_Loopbackdqspad'
+      - cmdTimeoutCycles: '0'
+      - busTimeoutCycles: '0'
+      - queueWeight:
+        - queueaEnable: 'false'
+        - queueaWeight:
+          - structORvalue: 'structure'
+          - queueaConfig:
+            - qos: '0'
+            - aging: '0'
+            - slaveHitSwith: '0'
+            - slaveHitNoswitch: '0'
+        - queuebEnable: 'false'
+        - queuebWeight:
+          - structORvalue: 'structure'
+          - queuebConfig:
+            - qos: '0'
+            - aging: '0'
+            - slaveHitSwith: '0'
+            - weightPagehit: '0'
+            - bankRotation: '0'
+    - semc_sdram_config_t:
+      - csxPinMux: 'kSEMC_MUXCSX0'
+      - semcSdramCs: 'kSEMC_SDRAM_CS0'
+      - address: '0x80000000'
+      - memsize_input: '32MB'
+      - portSize: 'kSEMC_PortSize16Bit'
+      - burstLen: 'kSEMC_Sdram_BurstLen1'
+      - columnAddrBitNum: 'kSEMC_SdramColunm_9bit'
+      - casLatency: 'kSEMC_LatencyTwo'
+      - tPrecharge2Act_Ns: '15'
+      - tAct2ReadWrite_Ns: '15'
+      - tRefreshRecovery_Ns: '75'
+      - tWriteRecovery_Ns: '12'
+      - tCkeOff_Ns: '42'
+      - tAct2Prechage_Ns: '42'
+      - tSelfRefRecovery_Ns: '67'
+      - tRefresh2Refresh_Ns: '60'
+      - tAct2Act_Ns: '60'
+      - tPrescalePeriod_Ns: '160'
+      - tIdleTimeout_Ns: '0'
+      - refreshPeriod_nsPerRow: '64'
+      - refreshUrgThreshold: '64'
+      - refreshBurstLen: '1'
+    - sdramArray: []
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
 /* clang-format on */
-/* CSI configuration */
-csi_config_t BOARD_CSI_config = {
-  .width = BOARD_CSI_FRAME_WIDTH,
-  .height = BOARD_CSI_FRAME_HEIGHT,
-  .bytesPerPixel = BOARD_CSI_BYTES_PER_PIXEL,
-  .linePitch_Bytes = BOARD_CSI_LINE_PITCH_BYTES,
-  .dataBus = kCSI_DataBus8Bit,
-  .workMode = kCSI_GatedClockMode,
-  .useExtVsync = true,
-  .polarityFlags = 0
-};
-/* Frame buffer block allocation */
-AT_NONCACHEABLE_SECTION_ALIGN(uint16_t BOARD_CSI_Buffer[BOARD_CSI_FRAME_BUFFER_COUNT][BOARD_CSI_FRAME_HEIGHT][BOARD_CSI_FRAME_WIDTH], BOARD_CSI_BUFFER_ALIGN);
 
-static void BOARD_CSI_init(void) {
-  /* CSI initialization */
-  CSI_Init(BOARD_CSI_PERIPHERAL, &BOARD_CSI_config);
-}
-
-/***********************************************************************************************************************
- * CSI_LPI2C initialization code
- **********************************************************************************************************************/
-/* clang-format off */
-/* TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
-instance:
-- name: 'CSI_LPI2C'
-- type: 'lpi2c'
-- mode: 'master'
-- custom_name_enabled: 'true'
-- type_id: 'lpi2c_db68d4f4f06a22e25ab51fe9bd6db4d2'
-- functional_group: 'BOARD_InitCSIPeripheral'
-- peripheral: 'LPI2C1'
-- config_sets:
-  - main:
-    - clockSource: 'Lpi2cClock'
-    - clockSourceFreq: 'BOARD_BootClockRUN'
-    - interrupt:
-      - IRQn: 'LPI2C1_IRQn'
-      - enable_interrrupt: 'enabled'
-      - enable_priority: 'false'
-      - priority: '0'
-      - enable_custom_name: 'false'
-    - quick_selection: 'qs_interrupt'
-  - master:
-    - mode: 'transfer'
-    - config:
-      - enableMaster: 'true'
-      - enableDoze: 'true'
-      - debugEnable: 'false'
-      - ignoreAck: 'false'
-      - pinConfig: 'kLPI2C_2PinOpenDrain'
-      - baudRate_Hz: '100000'
-      - busIdleTimeout_ns: '0'
-      - pinLowTimeout_ns: '0'
-      - sdaGlitchFilterWidth_ns: '0'
-      - sclGlitchFilterWidth_ns: '0'
-      - hostRequest:
-        - enable: 'false'
-        - source: 'kLPI2C_HostRequestExternalPin'
-        - polarity: 'kLPI2C_HostRequestPinActiveHigh'
-      - edmaRequestSources: ''
-    - transfer:
-      - blocking: 'false'
-      - flags: ''
-      - slaveAddress: '0'
-      - direction: 'kLPI2C_Write'
-      - subaddress: '0'
-      - subaddressSize: '1'
-      - dataSize: '1'
-      - callback:
-        - name: ''
-        - userData: ''
-    - quick_selection: 'qs_master_transfer'
- * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
-/* clang-format on */
-const lpi2c_master_config_t BOARD_CSI_LPI2C_masterConfig = {
-  .enableMaster = true,
-  .enableDoze = true,
-  .debugEnable = false,
-  .ignoreAck = false,
-  .pinConfig = kLPI2C_2PinOpenDrain,
-  .baudRate_Hz = 100000UL,
-  .busIdleTimeout_ns = 0UL,
-  .pinLowTimeout_ns = 0UL,
-  .sdaGlitchFilterWidth_ns = 0U,
-  .sclGlitchFilterWidth_ns = 0U,
-  .hostRequest = {
-    .enable = false,
-    .source = kLPI2C_HostRequestExternalPin,
-    .polarity = kLPI2C_HostRequestPinActiveHigh
-  }
-};
-lpi2c_master_transfer_t BOARD_CSI_LPI2C_masterTransfer = {
-  .flags = kLPI2C_TransferDefaultFlag,
-  .slaveAddress = 0,
-  .direction = kLPI2C_Write,
-  .subaddress = 0,
-  .subaddressSize = 1,
-  .data = BOARD_CSI_LPI2C_masterBuffer,
-  .dataSize = 1
-};
-lpi2c_master_handle_t BOARD_CSI_LPI2C_masterHandle;
-uint8_t BOARD_CSI_LPI2C_masterBuffer[BOARD_CSI_LPI2C_MASTER_BUFFER_SIZE];
-
-static void BOARD_CSI_LPI2C_init(void) {
-  LPI2C_MasterInit(BOARD_CSI_LPI2C_PERIPHERAL, &BOARD_CSI_LPI2C_masterConfig, BOARD_CSI_LPI2C_CLOCK_FREQ);
-  LPI2C_MasterTransferCreateHandle(BOARD_CSI_LPI2C_PERIPHERAL, &BOARD_CSI_LPI2C_masterHandle, NULL, NULL);
-}
-
-/***********************************************************************************************************************
- * BOARD_InitCANPeripheral functional group
- **********************************************************************************************************************/
-/***********************************************************************************************************************
- * CAN initialization code
- **********************************************************************************************************************/
-/* clang-format off */
-/* TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
-instance:
-- name: 'CAN'
-- type: 'flexcan'
-- mode: 'interrupts'
-- custom_name_enabled: 'true'
-- type_id: 'flexcan_d4764a197c0db35c88f36862312557e4'
-- functional_group: 'BOARD_InitCANPeripheral'
-- peripheral: 'CAN2'
-- config_sets:
-  - interruptsCfg:
-    - messageBufferIrqs: '0'
-    - messageBufferIrqs2: '0'
-    - interruptsEnable: ''
-    - enable_irq: 'false'
-    - interrupt_shared:
-      - IRQn: 'CAN2_IRQn'
-      - enable_interrrupt: 'enabled'
-      - enable_priority: 'false'
-      - priority: '0'
-      - enable_custom_name: 'false'
-  - fsl_flexcan:
-    - can_config:
-      - clockSource: 'kFLEXCAN_ClkSrcOsc'
-      - clockSourceFreq: 'BOARD_BootClockRUN'
-      - wakeupSrc: 'kFLEXCAN_WakeupSrcUnfiltered'
-      - baudRate: '1000000'
-      - maxMbNum: '16'
-      - enableLoopBack: 'false'
-      - enableTimerSync: 'true'
-      - enableSelfWakeup: 'false'
-      - enableIndividMask: 'false'
-      - timingConfig:
-        - propSeg: '2'
-        - phaseSeg1: '4'
-        - phaseSeg2: '3'
-        - rJumpwidth: '2'
-        - bitTime: []
-    - enableRxFIFO: 'false'
-    - rxFIFO:
-      - idFilterTable: ''
-      - idFilterNum: 'num0'
-      - idFilterType: 'kFLEXCAN_RxFifoFilterTypeA'
-      - priority: 'kFLEXCAN_RxFifoPrioLow'
-    - channels:
-      - 0:
-        - mbID: '0'
-        - mbType: 'mbRx'
-        - rxMb:
-          - id: '0'
-          - format: 'kFLEXCAN_FrameFormatStandard'
-          - type: 'kFLEXCAN_FrameTypeData'
-      - 1:
-        - mbID: '1'
-        - mbType: 'mbTx'
-        - rxMb:
-          - id: '0'
-          - format: 'kFLEXCAN_FrameFormatStandard'
-          - type: 'kFLEXCAN_FrameTypeData'
-    - quick_selection: 'default'
- * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
-/* clang-format on */
-const flexcan_config_t BOARD_CAN_config = {
-  .wakeupSrc = kFLEXCAN_WakeupSrcUnfiltered,
-  .baudRate = 1000000UL,
-  .maxMbNum = 16U,
-  .enableLoopBack = false,
-  .enableTimerSync = true,
-  .enableSelfWakeup = false,
-  .enableIndividMask = false,
-  .timingConfig = {
-    .preDivider = 3,
-    .propSeg = 1,
-    .phaseSeg1 = 3,
-    .phaseSeg2 = 2,
-    .rJumpwidth = 1
-  }
-};
-/* Message buffer 0 configuration structure */
-const flexcan_rx_mb_config_t BOARD_CAN_rx_mb_config_0 = {
-  .id = 0UL,
-  .format = kFLEXCAN_FrameFormatStandard,
-  .type = kFLEXCAN_FrameTypeData
-};
-
-static void BOARD_CAN_init(void) {
-  FLEXCAN_Init(BOARD_CAN_PERIPHERAL, &BOARD_CAN_config, BOARD_CAN_CLOCK_SOURCE);
-
-  /* Message buffer 0 initialization */
-  FLEXCAN_SetRxMbConfig(BOARD_CAN_PERIPHERAL, 0, &BOARD_CAN_rx_mb_config_0, true);
-  /* Message buffer 1 initialization */
-  FLEXCAN_SetTxMbConfig(BOARD_CAN_PERIPHERAL, 1, true);
-}
-
-/***********************************************************************************************************************
- * BOARD_InitLCDPeripheral functional group
- **********************************************************************************************************************/
-/***********************************************************************************************************************
- * LCD initialization code
- **********************************************************************************************************************/
-/* clang-format off */
-/* TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
-instance:
-- name: 'LCD'
-- type: 'elcdif'
-- mode: 'rgbMode'
-- custom_name_enabled: 'true'
-- type_id: 'elcdif_1c39bcb43ed1a24bc8980672c7378576'
-- functional_group: 'BOARD_InitLCDPeripheral'
-- peripheral: 'LCDIF'
-- config_sets:
-  - fsl_elcdif:
-    - config:
-      - panelWidthInt: '480'
-      - panelHeightInt: '272'
-      - hsw: '41'
-      - hfp: '4'
-      - hbp: '8'
-      - vsw: '10'
-      - vfp: '4'
-      - vbp: '2'
-      - frameRate: '60 Hz'
-      - polarityFlags_st:
-        - vSyncActive: 'kELCDIF_VsyncActiveLow'
-        - hSyncActive: 'kELCDIF_HsyncActiveLow'
-        - dataEnableActive: 'kELCDIF_DataEnableActiveLow'
-        - driveDataClkEdge: 'kELCDIF_DriveDataOnFallingClkEdge'
-      - bufferName: 'defaultBuffer'
-      - bufferAlign: '64'
-      - pixelFormat: 'kELCDIF_PixelFormatRGB565'
-      - dataBus: 'kELCDIF_DataBus16Bit'
-      - enablePxpHandShake: 'false'
-      - start: 'false'
-    - isInterruptEnabled: 'true'
-    - elcdifInterruptSources: 'kELCDIF_CurFrameDoneInterruptEnable'
-    - interrupt:
-      - IRQn: 'LCDIF_IRQn'
-      - enable_interrrupt: 'enabled'
-      - enable_priority: 'false'
-      - priority: '0'
-      - enable_custom_name: 'false'
- * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
-/* clang-format on */
-/* RGB mode configuration */
-const elcdif_rgb_mode_config_t BOARD_LCD_rgbConfig = {
-  .panelWidth = BOARD_LCD_PANEL_WIDTH,
-  .panelHeight = BOARD_LCD_PANEL_HEIGHT,
-  .hsw = 41U,
-  .hfp = 4U,
-  .hbp = 8U,
-  .vsw = 10U,
-  .vfp = 4U,
-  .vbp = 2U,
-  .polarityFlags = (kELCDIF_VsyncActiveLow | kELCDIF_HsyncActiveLow | kELCDIF_DataEnableActiveLow | kELCDIF_DriveDataOnFallingClkEdge),
-  .bufferAddr = (uint32_t) BOARD_LCD_Buffer[0],
-  .pixelFormat = kELCDIF_PixelFormatRGB565,
-  .dataBus = kELCDIF_DataBus16Bit
-};
-/* RGB buffer */
-AT_NONCACHEABLE_SECTION_ALIGN(uint16_t BOARD_LCD_Buffer[2][BOARD_LCD_PANEL_HEIGHT][BOARD_LCD_PANEL_WIDTH], BOARD_LCD_RGB_BUFFER_ALIGN);
-
-static void BOARD_LCD_init(void) {
-  /* RGB mode initialization */
-  ELCDIF_RgbModeInit(BOARD_LCD_PERIPHERAL, &BOARD_LCD_rgbConfig);
-  /* Enable interrupts */
-  ELCDIF_EnableInterrupts(BOARD_LCD_PERIPHERAL, (kELCDIF_CurFrameDoneInterruptEnable));
-  /* Enable interrupt LCDIF_IRQn request in the NVIC */
-  EnableIRQ(LCDIF_IRQn);
-}
+/* Empty initialization function (commented out)
+static void SEMC_init(void) {
+} */
 
 /***********************************************************************************************************************
  * Initialization functions
  **********************************************************************************************************************/
 void BOARD_InitPeripherals(void)
 {
-}
-
-void BOARD_InitDEBUG_UARTPeripheral(void)
-{
   /* Initialize components */
-  BOARD_DEBUG_UART_init();
-}
-
-void BOARD_InitCSIPeripheral(void)
-{
-  /* Initialize components */
-  BOARD_CSI_init();
-  BOARD_CSI_LPI2C_init();
-}
-
-void BOARD_InitCANPeripheral(void)
-{
-  /* Initialize components */
-  BOARD_CAN_init();
-}
-
-void BOARD_InitLCDPeripheral(void)
-{
-  /* Initialize components */
-  BOARD_LCD_init();
 }
 
 /***********************************************************************************************************************
