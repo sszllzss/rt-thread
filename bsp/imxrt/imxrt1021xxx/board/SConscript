@@ -1,3 +1,12 @@
+'''
+Descripttion: 
+version: v1.0
+Author: SSZL
+e-meil: sszllzss@foxmail.com
+Date: 2021-08-18 18:05:12
+LastEditors: SSZL
+LastEditTime: 2021-08-19 16:33:49
+'''
 from building import *
 
 cwd = GetCurrentDir()
@@ -7,10 +16,11 @@ src = Split("""
 board.c
 MCUX_Config/board/clock_config.c
 MCUX_Config/board/pin_mux.c
+MCUX_Config/board/dcd.c
 """)
 
 CPPPATH = [cwd,cwd + '/MCUX_Config/board',cwd + '/ports']
-CPPDEFINES = ['CPU_MIMXRT1021CAG4A', 'SKIP_SYSCLK_INIT', 'EVK_MCIMXRM', 'FSL_SDK_ENABLE_DRIVER_CACHE_CONTROL=1','XIP_EXTERNAL_FLASH=1']
+CPPDEFINES = ['CPU_MIMXRT1021CAG4A', 'SKIP_SYSCLK_INIT', 'EVK_MCIMXRM', 'FSL_SDK_ENABLE_DRIVER_CACHE_CONTROL=1','XIP_EXTERNAL_FLASH=1','XIP_BOOT_HEADER_ENABLE=1','XIP_BOOT_HEADER_DCD_ENABLE=1']
 
 group = DefineGroup('Drivers', src, depend = [''], CPPPATH = CPPPATH, CPPDEFINES=CPPDEFINES)
 

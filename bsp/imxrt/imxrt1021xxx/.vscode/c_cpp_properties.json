@@ -1,0 +1,48 @@
+{
+    "configurations": [
+        {
+            "intelliSenseMode": "clang-x64",
+            "name": "Win32",
+            "cppStandard": "c++11",
+            "cStandard": "c99",
+            "compilerPath": "D:/env/tools/gnu_gcc/arm_gcc/mingw/bin/arm-none-eabi-gcc",
+            "includePath": [
+                "E:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx",
+                "E:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/applications",
+                "E:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/board",
+                "E:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/board/MCUX_Config/board",
+                "E:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/board/ports",
+                "E:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/xip",
+                "E:/RTOS/Rt-thread/rt-thread/bsp/imxrt/libraries/MIMXRT1021/CMSIS/Include",
+                "E:/RTOS/Rt-thread/rt-thread/bsp/imxrt/libraries/MIMXRT1021/MIMXRT1021",
+                "E:/RTOS/Rt-thread/rt-thread/bsp/imxrt/libraries/MIMXRT1021/MIMXRT1021/drivers",
+                "E:/RTOS/Rt-thread/rt-thread/bsp/imxrt/libraries/drivers",
+                "E:/RTOS/Rt-thread/rt-thread/bsp/imxrt/libraries/drivers/config",
+                "E:/RTOS/Rt-thread/rt-thread/components/dfs/filesystems/devfs",
+                "E:/RTOS/Rt-thread/rt-thread/components/dfs/include",
+                "E:/RTOS/Rt-thread/rt-thread/components/drivers/include",
+                "E:/RTOS/Rt-thread/rt-thread/components/drivers/spi",
+                "E:/RTOS/Rt-thread/rt-thread/components/finsh",
+                "E:/RTOS/Rt-thread/rt-thread/components/libc/compilers/common",
+                "E:/RTOS/Rt-thread/rt-thread/components/libc/compilers/newlib",
+                "E:/RTOS/Rt-thread/rt-thread/include",
+                "E:/RTOS/Rt-thread/rt-thread/libcpu/arm/common",
+                "E:/RTOS/Rt-thread/rt-thread/libcpu/arm/cortex-m7"
+            ],
+            "defines": [
+                "CPU_MIMXRT1021CAG4A",
+                "EVK_MCIMXRM",
+                "FSL_SDK_ENABLE_DRIVER_CACHE_CONTROL=1",
+                "HAVE_CCONFIG_H",
+                "RT_USING_NEWLIB",
+                "SKIP_SYSCLK_INIT",
+                "XIP_BOOT_HEADER_DCD_ENABLE=1",
+                "XIP_BOOT_HEADER_ENABLE=1",
+                "XIP_EXTERNAL_FLASH=1",
+                "__RTTHREAD__",
+                "__START=entry"
+            ]
+        }
+    ],
+    "version": 4
+}

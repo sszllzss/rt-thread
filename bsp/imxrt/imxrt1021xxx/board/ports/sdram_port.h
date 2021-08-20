@@ -1,4 +1,13 @@
 /*
+ * @Descripttion: 
+ * @version: v1.0
+ * @Author: SSZL
+ * @e-meil: sszllzss@foxmail.com
+ * @Date: 2021-07-30 13:15:17
+ * @LastEditors: SSZL
+ * @LastEditTime: 2021-08-19 17:59:20
+ */
+/*
  * Copyright (c) 2006-2018, RT-Thread Development Team
  *
  * SPDX-License-Identifier: Apache-2.0
@@ -12,38 +21,66 @@
 #ifndef SDRAM_PORT_H__
 #define SDRAM_PORT_H__
 
+
 /* parameters for sdram peripheral */
-
-#define SDRAM_BANK_ADDR                 ((uint32_t)0x80000000U)
+#define SDRAM_BANK_ADDR                 ((uint32_t)0x80000000U) //基地址
 /* region#0/1/2/3: kSEMC_SDRAM_CS0/1/2/3 */
-#define SDRAM_REGION                    kSEMC_SDRAM_CS0
+#define SDRAM_REGION                    kSEMC_SDRAM_CS0   //区域选择
 /* CS pin: kSEMC_MUXCSX0/1/2/3 */
-#define SDRAM_CS_PIN                    kSEMC_MUXCSX0
+#define SDRAM_CS_PIN                    kSEMC_MUXCSX0 //CS 引脚选择
 /* size(kbyte):32MB = 32*1024*1KBytes */
-#define SDRAM_SIZE                      ((uint32_t)0x8000)
+#define SDRAM_SIZE                      ((uint32_t)0x8000) //存储器大小，单位为 kbytes
 /* data width: kSEMC_PortSize8Bit,kSEMC_PortSize16Bit */
-#define SDRAM_DATA_WIDTH                kSEMC_PortSize16Bit
+#define SDRAM_DATA_WIDTH                kSEMC_PortSize16Bit //Port 的大小 数据宽
 /* column bit numbers: kSEMC_SdramColunm_9/10/11/12bit */
-#define SDRAM_COLUMN_BITS               kSEMC_SdramColunm_9bit
-/* cas latency clock number: kSEMC_LatencyOne/Two/Three */
-#define SDRAM_CAS_LATENCY               kSEMC_LatencyThree
+#define SDRAM_COLUMN_BITS               kSEMC_SdramColunm_9bit //列地址位宽
 
-/* Timing configuration for W9825G6KH */
+
+
+/* cas latency clock number: kSEMC_LatencyOne/Two/Three */
+#define SDRAM_CAS_LATENCY               kSEMC_LatencyThree //CAS 延迟
+
+/* Timing configuration for  IS42S16160J-6 */
 /* TRP:precharge to active command time (ns) */
-#define SDRAM_TRP                       18
+#define SDRAM_TRP                       18 //预充电（Precharge）至有效（active）的等待时间，单位为纳秒
 /* TRCD:active to read/write command delay time (ns) */
-#define SDRAM_TRCD                      18
+#define SDRAM_TRCD                      18 //Act 至读/写操作的等待时间，单位为纳秒
 /* The time between two refresh commands,Use the maximum of the (Trfc , Txsr).(ns) */
-#define SDRAM_REFRESH_RECOVERY          67
+#define SDRAM_REFRESH_RECOVERY          66  //刷新恢复（Refresh recovery）时间，单位为纳秒
 /* TWR:write recovery time (ns). */
-#define SDRAM_TWR                       12
+#define SDRAM_TWR                       (3 * (1000000000 / clockFrq))//写恢复（write recovery）时间，单位为纳秒
 /* TRAS:active to precharge command time (ns). */
-#define SDRAM_TRAS       42
+#define SDRAM_TRAS       42 //有效（Active）至预充电（precharge）时间 ，单位为纳秒
 /* TRC time (ns). */
-#define SDRAM_TRC                       60
+#define SDRAM_TRC                       60 //刷新至刷新的等待时间（Refresh to refresh），单位为纳秒
 /* active to active time (ns). */
-#define SDRAM_ACT2ACT                   60
+#define SDRAM_ACT2ACT                   60 //有效至有效的等待时间（Active to active） ，单位为纳秒
 /* refresh time (ns). 64ms */
-#define SDRAM_REFRESH_ROW               64 * 1000000 / 8192
+#define SDRAM_REFRESH_ROW               64 * 1000000 / 8192 //刷新定时器周期，即每隔多久刷新一行      和紧急刷新阈值
+
+
+
+
+
+// /* cas latency clock number: kSEMC_LatencyOne/Two/Three */
+// #define SDRAM_CAS_LATENCY               kSEMC_LatencyThree //CAS 延迟
+
+// /* Timing configuration for W9825G6KH-6 */
+// /* TRP:precharge to active command time (ns) */
+// #define SDRAM_TRP                       20 //预充电（Precharge）至有效（active）的等待时间，单位为纳秒
+// /* TRCD:active to read/write command delay time (ns) */
+// #define SDRAM_TRCD                      20 //Act 至读/写操作的等待时间，单位为纳秒
+// /* The time between two refresh commands,Use the maximum of the (Trfc , Txsr).(ns) */
+// #define SDRAM_REFRESH_RECOVERY          67  //刷新恢复（Refresh recovery）时间，单位为纳秒
+// /* TWR:write recovery time (ns). */
+// #define SDRAM_TWR                       20//写恢复（write recovery）时间，单位为纳秒
+// /* TRAS:active to precharge command time (ns). */
+// #define SDRAM_TRAS       50 //有效（Active）至预充电（precharge）时间 ，单位为纳秒
+// /* TRC time (ns). */
+// #define SDRAM_TRC                       100 //刷新至刷新的等待时间（Refresh to refresh），单位为纳秒
+// /* active to active time (ns). */
+// #define SDRAM_ACT2ACT                   70 //有效至有效的等待时间（Active to active） ，单位为纳秒
+// /* refresh time (ns). 64ms */
+// #define SDRAM_REFRESH_ROW               64 * 1000000 / 8192 //刷新定时器周期，即每隔多久刷新一行      和紧急刷新阈值
 
 #endif /* SDRAM_PORT_H__ */

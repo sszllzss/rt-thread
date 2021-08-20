@@ -29,7 +29,7 @@
 ENTRY(Reset_Handler)
 
 HEAP_SIZE  = DEFINED(__heap_size__)  ? __heap_size__  : 0x0400;
-STACK_SIZE = DEFINED(__stack_size__) ? __stack_size__ : 0x0400;
+STACK_SIZE = DEFINED(__stack_size__) ? __stack_size__ : 0x0800;
 VECTOR_RAM_SIZE = DEFINED(__ram_vector_table__) ? 0x00000400 : 0;
 
 /* Specify the memory areas */
@@ -73,6 +73,7 @@ SECTIONS
   .interrupts :
   {
     __VECTOR_TABLE = .;
+    __Vectors = .;
     . = ALIGN(4);
     KEEP(*(.isr_vector))     /* Startup code */
     . = ALIGN(4);
@@ -263,8 +264,10 @@ SECTIONS
   {
     . = ALIGN(8);
     . += STACK_SIZE;
+    __StackTop = .;
   } > m_data
-  
+  PROVIDE(__stack = __StackTop);
+
   .RTT_HEAP :
   {
     heap_start = .;
@@ -273,14 +276,9 @@ SECTIONS
   
   PROVIDE(heap_end = ORIGIN(m_data) + LENGTH(m_data));
   
-  /* Initializes stack on the end of block */
-  __StackTop   = ORIGIN(m_data) + LENGTH(m_data);
-  __StackLimit = __StackTop - STACK_SIZE;
-  PROVIDE(__stack = __StackTop);
-
   .ARM.attributes 0 : { *(.ARM.attributes) }
 
-  ASSERT(__StackLimit >= __HeapLimit, "region m_data overflowed with stack and heap")
+  ASSERT(heap_end >= 0x5000, "RTT_HEAP must be greater than 0x5000 ")
   
   
 }

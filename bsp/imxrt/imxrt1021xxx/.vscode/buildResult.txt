@@ -1,0 +1,120 @@
+   text	   data	    bss	    dec	    hex	filename
+ 215980	   7176	  40360	 263516	  4055c	e:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/rtthread.elf
+BuildTime:2021-08-20 11:42:52.369000
+-------------------------------------------------------
+   text	   data	    bss	    dec	    hex	filename
+ 215980	   7176	  40360	 263516	  4055c	e:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/rtthread.elf
+BuildTime:2021-08-20 11:42:07.771000
+-------------------------------------------------------
+   text	   data	    bss	    dec	    hex	filename
+ 215980	   7176	  40360	 263516	  4055c	e:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/rtthread.elf
+BuildTime:2021-08-20 11:41:04.398000
+-------------------------------------------------------
+   text	   data	    bss	    dec	    hex	filename
+ 215980	   7176	  40360	 263516	  4055c	e:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/rtthread.elf
+BuildTime:2021-08-19 18:40:51.659000
+-------------------------------------------------------
+   text	   data	    bss	    dec	    hex	filename
+ 215980	   7176	  40360	 263516	  4055c	e:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/rtthread.elf
+BuildTime:2021-08-19 18:19:31.983000
+-------------------------------------------------------
+   text	   data	    bss	    dec	    hex	filename
+ 215980	   7176	  40360	 263516	  4055c	e:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/rtthread.elf
+BuildTime:2021-08-19 17:59:46.771000
+-------------------------------------------------------
+   text	   data	    bss	    dec	    hex	filename
+ 215980	   7176	  40360	 263516	  4055c	e:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/rtthread.elf
+BuildTime:2021-08-19 17:58:19.039000
+-------------------------------------------------------
+   text	   data	    bss	    dec	    hex	filename
+ 215964	   7176	  40360	 263500	  4054c	e:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/rtthread.elf
+BuildTime:2021-08-19 16:40:09.126000
+-------------------------------------------------------
+   text	   data	    bss	    dec	    hex	filename
+ 215964	   7176	  40360	 263500	  4054c	e:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/rtthread.elf
+BuildTime:2021-08-19 16:33:55.715000
+-------------------------------------------------------
+   text	   data	    bss	    dec	    hex	filename
+ 213492	   7176	  40360	 261028	  3fba4	e:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/rtthread.elf
+BuildTime:2021-08-19 14:52:54.041000
+-------------------------------------------------------
+   text	   data	    bss	    dec	    hex	filename
+ 213500	   7176	  40360	 261036	  3fbac	e:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/rtthread.elf
+BuildTime:2021-08-19 14:42:21.980000
+-------------------------------------------------------
+   text	   data	    bss	    dec	    hex	filename
+ 212748	   7176	  40360	 260284	  3f8bc	e:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/rtthread.elf
+BuildTime:2021-08-19 13:04:23.983000
+-------------------------------------------------------
+   text	   data	    bss	    dec	    hex	filename
+ 208764	   7176	   7496	 223436	  368cc	e:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/rtthread.elf
+BuildTime:2021-08-19 13:03:49.491000
+-------------------------------------------------------
+   text	   data	    bss	    dec	    hex	filename
+ 208764	   7176	   7496	 223436	  368cc	e:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/rtthread.elf
+BuildTime:2021-08-19 11:07:59.874000
+-------------------------------------------------------
+   text	   data	    bss	    dec	    hex	filename
+ 208740	   7176	   7496	 223412	  368b4	e:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/rtthread.elf
+BuildTime:2021-08-19 11:05:49.974000
+-------------------------------------------------------
+   text	   data	    bss	    dec	    hex	filename
+ 208764	   7176	   7496	 223436	  368cc	e:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/rtthread.elf
+BuildTime:2021-08-19 11:04:53.452000
+-------------------------------------------------------
+   text	   data	    bss	    dec	    hex	filename
+ 208764	   7176	   7496	 223436	  368cc	e:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/rtthread.elf
+BuildTime:2021-08-19 11:04:14.144000
+-------------------------------------------------------
+   text	   data	    bss	    dec	    hex	filename
+ 208836	   7176	   7496	 223508	  36914	e:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/rtthread.elf
+BuildTime:2021-08-19 10:58:06.458000
+-------------------------------------------------------
+   text	   data	    bss	    dec	    hex	filename
+ 212820	   7176	  39336	 259332	  3f504	e:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/rtthread.elf
+BuildTime:2021-08-19 10:56:24.865000
+-------------------------------------------------------
+   text	   data	    bss	    dec	    hex	filename
+ 212820	   7176	  39336	 259332	  3f504	e:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/rtthread.elf
+BuildTime:2021-08-19 10:56:20.210000
+-------------------------------------------------------
+   text	   data	    bss	    dec	    hex	filename
+ 212820	   7176	  39336	 259332	  3f504	e:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/rtthread.elf
+BuildTime:2021-08-19 10:56:16.117000
+-------------------------------------------------------
+   text	   data	    bss	    dec	    hex	filename
+ 212820	   7176	  39336	 259332	  3f504	e:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/rtthread.elf
+BuildTime:2021-08-19 10:55:41.584000
+-------------------------------------------------------
+   text	   data	    bss	    dec	    hex	filename
+ 212820	   7176	  39336	 259332	  3f504	e:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/rtthread.elf
+BuildTime:2021-08-19 10:52:19.006000
+-------------------------------------------------------
+   text	   data	    bss	    dec	    hex	filename
+ 212820	   7176	  39336	 259332	  3f504	e:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/rtthread.elf
+BuildTime:2021-08-19 10:50:44.723000
+-------------------------------------------------------
+   text	   data	    bss	    dec	    hex	filename
+ 212820	   7176	  39336	 259332	  3f504	e:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/rtthread.elf
+BuildTime:2021-08-19 10:50:35.079000
+-------------------------------------------------------
+   text	   data	    bss	    dec	    hex	filename
+ 212820	   7176	  39336	 259332	  3f504	e:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/rtthread.elf
+BuildTime:2021-08-19 10:46:08.840000
+-------------------------------------------------------
+   text	   data	    bss	    dec	    hex	filename
+ 209452	   6760	  39336	 255548	  3e63c	e:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/rtthread.elf
+BuildTime:2021-08-19 10:36:18.227000
+-------------------------------------------------------
+   text	   data	    bss	    dec	    hex	filename
+ 208796	   6544	  39240	 254580	  3e274	e:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/rtthread.elf
+BuildTime:2021-08-19 10:35:15.712000
+-------------------------------------------------------
+   text	   data	    bss	    dec	    hex	filename
+ 208796	   6544	  39240	 254580	  3e274	e:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/rtthread.elf
+BuildTime:2021-08-19 10:31:23.101000
+-------------------------------------------------------
+   text	   data	    bss	    dec	    hex	filename
+ 208796	   6544	  39240	 254580	  3e274	e:/RTOS/Rt-thread/rt-thread/bsp/imxrt/imxrt1021xxx/rtthread.elf
+BuildTime:2021-08-18 18:08:41.556000
+-------------------------------------------------------

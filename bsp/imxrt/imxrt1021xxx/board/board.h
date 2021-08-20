@@ -1,4 +1,13 @@
 /*
+ * @Descripttion: 
+ * @version: v1.0
+ * @Author: SSZL
+ * @e-meil: sszllzss@foxmail.com
+ * @Date: 2021-08-18 18:05:12
+ * @LastEditors: SSZL
+ * @LastEditTime: 2021-08-19 10:50:38
+ */
+/*
  * Copyright (c) 2006-2018, RT-Thread Development Team
  *
  * SPDX-License-Identifier: Apache-2.0
@@ -34,10 +43,12 @@ extern int heap_end;
 #define HEAP_END            (&heap_end)
 #endif
 
+
 #define HEAP_SIZE           ((uint32_t)HEAP_END - (uint32_t)HEAP_BEGIN)
 
 void rt_hw_board_init(void);
 
+#define BOARD_FLASH_SIZE (0x800000U)
 
 #define GPIO4 0
 #define GPIO4_Combined_0_15_IRQn RT_NULL
