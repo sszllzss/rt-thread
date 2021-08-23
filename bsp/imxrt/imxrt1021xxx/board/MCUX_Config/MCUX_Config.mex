@@ -635,37 +635,37 @@
                         <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_06" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_DATA6"/>
                         <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_07" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_DATA7"/>
                         <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_08" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_DM00"/>
-                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_09" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_ADDR0"/>
-                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_10" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_ADDR1"/>
-                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_11" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_ADDR2"/>
-                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_12" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_ADDR3"/>
-                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_13" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_ADDR4"/>
-                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_14" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_ADDR5"/>
-                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_15" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_ADDR6"/>
-                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_16" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_ADDR7"/>
-                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_17" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_ADDR8"/>
-                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_18" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_ADDR9"/>
-                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_19" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_ADDR11"/>
-                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_20" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_ADDR12"/>
-                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_21" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_BA0"/>
-                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_22" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_BA1"/>
-                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_23" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_ADDR10"/>
-                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_24" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_CAS"/>
-                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_25" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_RAS"/>
-                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_26" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_CLK"/>
-                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_27" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_CKE"/>
-                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_28" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_WE"/>
-                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_29" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_CS0"/>
-                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_30" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_DATA8"/>
-                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_31" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_DATA9"/>
-                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_32" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_DATA10"/>
-                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_33" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_DATA11"/>
-                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_34" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_DATA12"/>
-                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_35" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_DATA13"/>
-                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_36" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_DATA14"/>
-                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_37" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_DATA15"/>
-                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_38" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_DM01"/>
-                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_39" value="0x10" value_width="4" comment="打开软件输入启动选择功能SEMC_DQS"/>
+                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_09" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_WE"/>
+                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_10" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_CAS"/>
+                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_11" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_RAS"/>
+                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_12" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_CS0"/>
+                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_13" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_BA0"/>
+                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_14" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_BA1"/>
+                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_15" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_ADDR10"/>
+                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_16" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_ADDR00"/>
+                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_17" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_ADDR01"/>
+                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_18" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_ADDR02"/>
+                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_19" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_ADDR03"/>
+                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_20" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_ADDR04"/>
+                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_21" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_ADDR05"/>
+                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_22" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_ADDR06"/>
+                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_23" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_ADDR07"/>
+                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_24" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_ADDR08"/>
+                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_25" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_ADDR09"/>
+                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_26" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_ADDR11"/>
+                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_27" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_ADDR12"/>
+                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_28" value="0x10" value_width="4" comment="关闭软件输入启动选择功能SEMC_DQS"/>
+                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_29" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_CKE"/>
+                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_30" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_CLK"/>
+                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_31" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_DM01"/>
+                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_32" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_DATA08"/>
+                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_33" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_DATA09"/>
+                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_34" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_DATA10"/>
+                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_35" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_DATA11"/>
+                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_36" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_DATA12"/>
+                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_37" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_DATA13"/>
+                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_38" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_DATA14"/>
+                        <command type="write_value" address="IOMUXC_SW_MUX_CTL_PAD_GPIO_EMC_39" value="0x0" value_width="4" comment="关闭软件输入启动选择功能SEMC_DATA15"/>
                         <command type="write_value" address="IOMUXC_SW_PAD_CTL_PAD_GPIO_EMC_00" value="0x110F9" value_width="4" comment="高转换速度,驱动能力R0/7速度为200Mhz，关闭开路功能，使能pull/keepr 选择keeper功能，下拉100K 使能Hyst   "/>
                         <command type="write_value" address="IOMUXC_SW_PAD_CTL_PAD_GPIO_EMC_01" value="0x110F9" value_width="4" comment="高转换速度,驱动能力R0/7速度为200Mhz，关闭开路功能，使能pull/keepr 选择keeper功能，下拉100K 使能Hyst   "/>
                         <command type="write_value" address="IOMUXC_SW_PAD_CTL_PAD_GPIO_EMC_02" value="0x110F9" value_width="4" comment="高转换速度,驱动能力R0/7速度为200Mhz，关闭开路功能，使能pull/keepr 选择keeper功能，下拉100K 使能Hyst   "/>
