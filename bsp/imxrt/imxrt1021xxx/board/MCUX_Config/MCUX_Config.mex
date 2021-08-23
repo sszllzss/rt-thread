@@ -750,7 +750,7 @@
                   </command_group>
                   <command_group name="FlexRAM" enabled="false">
                      <commands>
-                        <command type="write_value" address="IOMUXC_GPR_GPR17" value="0xAAAD" value_width="4" comment="192K DTCM 32K ITCM 32K OCRAM"/>
+                        <command type="write_value" address="IOMUXC_GPR_GPR17" value="0xAABD" value_width="4" comment="160K DTCM 62K ITCM 32K OCRAM"/>
                         <command type="write_set_bits" address="IOMUXC_GPR_GPR16" value="0x4" value_width="4" comment="使设置生效"/>
                      </commands>
                   </command_group>
